@@ -1,4 +1,4 @@
-import { Resolvers } from "../types.generated"
+import { Resolvers } from "src/server/types.generated"
 import { addBook } from "./mutations/addBook"
 import { books } from "./queries/books"
 

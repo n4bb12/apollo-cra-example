@@ -1,6 +1,6 @@
 import assert from "ow"
-import { mockAuthors } from "../../author/mocks"
-import { MutationResolvers, AddBookResponse } from "../../types.generated"
+import { mockAuthors } from "src/server/author/mocks"
+import { AddBookResponse, MutationResolvers } from "src/server/types.generated"
 import { mockBooks } from "../mocks"
 
 export const addBook: MutationResolvers["addBook"] = (parent, args) => {

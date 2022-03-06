@@ -1,4 +1,4 @@
-import { Author } from "../types.generated"
+import { Author } from "src/server/types.generated"
 
 export const mockAuthors: Pick<Author, "name">[] = [
   {

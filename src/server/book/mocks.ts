@@ -1,4 +1,4 @@
-import { Book } from "../types.generated"
+import { Book } from "src/server/types.generated"
 
 export const mockBooks: Book[] = [
   {

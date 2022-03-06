@@ -1,16 +1,22 @@
 import express from "express"
-import path from "path"
-import { startServer } from "./server"
+import { join } from "path"
+import { config } from "src/config"
+import { configureServer, printWelcome } from "./server"
 
-startServer()
-  .then((app) => {
-    const staticRootDir = path.join(__dirname, "../client")
-    const index = path.join(staticRootDir, "/index.html")
+async function main() {
+  try {
+    const staticRootDir = join(__dirname, "../client")
+    const index = join(staticRootDir, "/index.html")
+    const { port } = config.server
 
+    const app = await configureServer()
     app.use(express.static(staticRootDir))
     app.get("/*", (req, res) => res.sendFile(index))
-  })
-  .catch((error) => {
+    app.listen({ port }, printWelcome)
+  } catch (error) {
     console.error(error)
     process.exit(1)
-  })
+  }
+}
+
+main()

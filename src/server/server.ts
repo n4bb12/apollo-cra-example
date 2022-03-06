@@ -5,7 +5,7 @@ import {
 import { ApolloServer } from "apollo-server-express"
 import express from "express"
 import http from "http"
-import { config } from "../config"
+import { config } from "src/config"
 import { authorResolvers } from "./author/resolvers"
 import { authorsTypeDefs } from "./author/typeDefs"
 import { bookResolvers } from "./book/resolvers"
@@ -23,8 +23,8 @@ function createApolloServer(httpServer: http.Server) {
   })
 }
 
-export async function startServer() {
-  const { port, path } = config.server
+export async function configureServer() {
+  const { path } = config.server
 
   const app = express()
   const httpServer = http.createServer(app)
@@ -32,8 +32,10 @@ export async function startServer() {
   await apolloServer.start()
   apolloServer.applyMiddleware({ app, path })
 
-  await new Promise<void>((resolve) => httpServer.listen({ port }, resolve))
-  console.log(`🚀 GraphQL Server ready at http://localhost:${port}${path}`)
-
   return app
+}
+
+export function printWelcome() {
+  const { port, path } = config.server
+  console.log(`🚀 GraphQL Server ready at http://localhost:${port}${path}`)
 }

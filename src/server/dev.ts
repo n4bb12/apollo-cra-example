@@ -1,11 +1,17 @@
-import { config } from "../config"
-import { startServer } from "./server"
+import { config } from "src/config"
+import { configureServer } from "./server"
 
-startServer()
-  .then((app) => {
-    app.get("/", (req, res) => res.redirect(config.server.path))
-  })
-  .catch((error) => {
+async function main() {
+  try {
+    const { path } = config.server
+
+    const app = await configureServer()
+    app.get("/", (req, res) => res.redirect(path))
+    return app
+  } catch (error) {
     console.error(error)
     process.exit(1)
-  })
+  }
+}
+
+export const viteNodeApp = main()

@@ -1,5 +1,5 @@
-import { mockBooks } from "../../book/mocks"
-import { QueryResolvers } from "../../types.generated"
+import { mockBooks } from "src/server/book/mocks"
+import { QueryResolvers } from "src/server/types.generated"
 import { mockAuthors } from "../mocks"
 
 export const getAuthors: QueryResolvers["authors"] = () => {
