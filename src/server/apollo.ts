@@ -24,18 +24,20 @@ function createApolloServer(httpServer: http.Server) {
 }
 
 export async function configureServer() {
-  const { path } = config.server
+  const { graphqlPath } = config.server
 
   const app = express()
   const httpServer = http.createServer(app)
   const apolloServer = createApolloServer(httpServer)
   await apolloServer.start()
-  apolloServer.applyMiddleware({ app, path })
+  apolloServer.applyMiddleware({ app, path: graphqlPath })
 
   return app
 }
 
 export function printWelcome() {
-  const { port, path } = config.server
-  console.log(`🚀 GraphQL Server ready at http://localhost:${port}${path}`)
+  const { port, graphqlPath } = config.server
+  console.log(
+    `🚀 GraphQL Server ready at http://localhost:${port}${graphqlPath}`,
+  )
 }

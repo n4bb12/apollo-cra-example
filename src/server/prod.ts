@@ -1,7 +1,7 @@
 import express from "express"
 import { join } from "path"
 import { config } from "src/config"
-import { configureServer, printWelcome } from "./server"
+import { configureServer, printWelcome } from "./apollo"
 
 async function main() {
   try {

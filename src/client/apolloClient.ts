@@ -8,6 +8,6 @@ if (!apiOrigin) {
 }
 
 export const apolloClient = new ApolloClient({
-  uri: apiOrigin + config.server.path,
+  uri: apiOrigin + config.server.graphqlPath,
   cache: new InMemoryCache(),
 })

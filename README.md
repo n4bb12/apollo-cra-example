@@ -4,7 +4,7 @@ An example of using GraphQL with `apollo-server`, `appollo-client`, and `create-
 
 ## Prerequisites
 
-[Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) &middot; [Bash](https://www.google.de/search?q=install+bash) &middot; [Node](https://nodejs.org/en/download) &middot; [Yarn](https://classic.yarnpkg.com/en/docs/install)
+[Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) | [Bash](https://www.google.de/search?q=install+bash) | [Node](https://nodejs.org/en/download) | [Yarn](https://classic.yarnpkg.com/en/docs/install)
 
 ## Usage
 
