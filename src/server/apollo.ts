@@ -5,7 +5,7 @@ import {
 import { ApolloServer } from "apollo-server-express"
 import express from "express"
 import http from "http"
-import { config } from "src/config"
+import { appConfig } from "src/config"
 import { authorResolvers } from "./author/resolvers"
 import { authorsTypeDefs } from "./author/typeDefs"
 import { bookResolvers } from "./book/resolvers"
@@ -24,7 +24,7 @@ function createApolloServer(httpServer: http.Server) {
 }
 
 export async function configureServer() {
-  const { graphqlPath } = config.server
+  const { graphqlPath } = appConfig.server
 
   const app = express()
   const httpServer = http.createServer(app)
@@ -36,7 +36,7 @@ export async function configureServer() {
 }
 
 export function printWelcome() {
-  const { port, graphqlPath } = config.server
+  const { port, graphqlPath } = appConfig.server
   console.log(
     `🚀 GraphQL Server ready at http://localhost:${port}${graphqlPath}`,
   )

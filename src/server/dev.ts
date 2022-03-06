@@ -1,9 +1,9 @@
-import { config } from "src/config"
+import { appConfig } from "src/config"
 import { configureServer } from "./apollo"
 
 async function main() {
   try {
-    const { graphqlPath } = config.server
+    const { graphqlPath } = appConfig.server
 
     const app = await configureServer()
     app.get("/", (req, res) => res.redirect(graphqlPath))

@@ -1,13 +1,13 @@
 import express from "express"
 import { join } from "path"
-import { config } from "src/config"
+import { appConfig } from "src/config"
 import { configureServer, printWelcome } from "./apollo"
 
 async function main() {
   try {
     const staticRootDir = join(__dirname, "../client")
     const index = join(staticRootDir, "/index.html")
-    const { port } = config.server
+    const { port } = appConfig.server
 
     const app = await configureServer()
     app.use(express.static(staticRootDir))
