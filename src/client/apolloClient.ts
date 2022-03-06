@@ -1,4 +1,6 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client"
+import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client"
+import { createPersistedQueryLink } from "@apollo/client/link/persisted-queries"
+import { sha256 } from "crypto-hash"
 import { config } from "../config"
 
 const apiOrigin = process.env.REACT_APP_API_ORIGIN
@@ -7,7 +9,14 @@ if (!apiOrigin) {
   throw new Error("Please set REACT_APP_API_ORIGIN")
 }
 
+const httpLink = new HttpLink({ uri: apiOrigin + config.server.graphqlPath })
+const persistedQueryLink = createPersistedQueryLink({
+  sha256,
+  useGETForHashedQueries: true,
+})
+const linkChain = persistedQueryLink.concat(httpLink)
+
 export const apolloClient = new ApolloClient({
-  uri: apiOrigin + config.server.graphqlPath,
+  link: linkChain,
   cache: new InMemoryCache(),
 })
