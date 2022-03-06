@@ -11,12 +11,10 @@ export const GET_BOOKS = gql`
 `
 
 export const Books: FC = () => {
-  const { loading, error, data } = useGetBooksQuery({
-    pollInterval: 1000,
-  })
+  const { loading, error, data } = useGetBooksQuery()
 
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>Error :(</p>
+  if (loading) return <div>Loading...</div>
+  if (error) return <div>Error :(</div>
 
   return <pre>{JSON.stringify(data, null, 2)}</pre>
 }

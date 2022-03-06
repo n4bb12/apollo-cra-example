@@ -1,4 +1,5 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client"
+import { config } from "../config"
 
 const apiOrigin = process.env.REACT_APP_API_ORIGIN
 
@@ -7,6 +8,6 @@ if (!apiOrigin) {
 }
 
 export const apolloClient = new ApolloClient({
-  uri: apiOrigin,
+  uri: apiOrigin + config.server.path,
   cache: new InMemoryCache(),
 })
