@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "./tsconfig.client.json",
+  "compilerOptions": {
+    "types": ["jest", "@testing-library/jest-dom"]
+  },
+  "include": ["src/client"],
+  "exclude": []
+}
