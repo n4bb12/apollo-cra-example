@@ -34,10 +34,3 @@ export async function configureServer() {
 
   return app
 }
-
-export function printWelcome() {
-  const { port, graphqlPath } = appConfig.server
-  console.log(
-    `🚀 GraphQL Server ready at http://localhost:${port}${graphqlPath}`,
-  )
-}

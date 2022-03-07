@@ -9,13 +9,20 @@ export default defineConfig({
   resolve: {
     alias: [{ find: "src", replacement: resolve(__dirname, "src") }],
   },
+  publicDir: "static", // unused, replace default public folder
+  build: {
+    outDir: "dist/server",
+  },
   server: {
     port: 4000,
   },
   plugins: [
     ...VitePluginNode({
       adapter: "express",
-      appPath: "src/server/dev.ts",
+      appPath:
+        process.env.NODE_ENV === "production"
+          ? "src/server/prod.ts"
+          : "src/server/dev.ts",
       exportName: "viteNodeApp",
     }),
   ],
